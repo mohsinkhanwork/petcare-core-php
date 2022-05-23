@@ -9,7 +9,6 @@ $id = $_REQUEST['id'];
 ?>
    
    <script>
-       alert('Data Deleted Successfully');
        window.open('index.php' , '_self');
 
 

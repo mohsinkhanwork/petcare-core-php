@@ -23,11 +23,68 @@ $dataofcleint = mysqli_fetch_assoc($run);
   border: 1px solid lightgray;
   padding: 1%;
 }
+
+.updatebutton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.updatebutton1 {
+    background-color: #AAC9CE;
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.updatebutton1:hover {
+    background-color: #5a8288;
+  color: white;
+}
+
+.deletebutton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.deletebutton1 {
+    background-color: #AAC9CE;
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.deletebutton1:hover {
+    background-color: #5a8288;
+  color: white;
+}
 </style>
 <html lang="en"><head></head><body style="background-color: rgba(128, 128, 128, 0.068);" data-new-gr-c-s-check-loaded="14.1062.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1062.0"><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
    
-    <title>pet</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+   
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+
 
   <div id="header" style="background-color: rgba(128, 128, 128, 0.068);
     /* position: absolute; */
@@ -69,7 +126,7 @@ height: 120px;
 position: relative;
 left: 20%;
 right: 20%;
-z-index: 2;"><a href="login_client.php" style="text-decoration: none;
+z-index: 2;"><a href="home.php" style="text-decoration: none;
     color: black;">Home</a></button>
   <button style="background-color: white;
     color: black;
@@ -84,7 +141,8 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
     position: relative;
     left: 20%;
     right: 20%;
-    z-index: 2;"><a href="aboutus.php" style="text-decoration: none;color: black;">AboutUs</a></button>
+    z-index: 2;">
+    <a href="aboutus.php?clientid=<?php echo $dataofcleint['id']; ?>" style="text-decoration: none;color: black;">AboutUs</a></button>
 
 <button style="background-color: white;
     color: black;
@@ -145,7 +203,7 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
     position: relative;
     left: 20%;
     right: 20%;
-    z-index: 2;"><a href="aboutus.php?clientid=<?php echo $data['id']; ?>" style="text-decoration: none;
+    z-index: 2;"><a href="aboutus.php?clientid=<?php echo $dataofcleint['id']; ?>" style="text-decoration: none;
     color: black;">ContactUs</a></button>
 
   <button style="background-color: white;
@@ -176,15 +234,7 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
     /* margin-left: 10%; */
     float: none;
     text-align: center;">
-      <h3 style="margin-left: 0px; margin-bottom: 10px;color: #ffffff;
-    font: italic 1.2em &quot;Fira Sans&quot;, serif;
-    font-family: 'Coming Soon', cursive;
-    font-weight: 100;
-    font-size: 60px;
-    text-align: center;
-    float: none;
-    padding-top: 3%;margin-left: 0px;
-    margin-bottom: 10px;text-align: left;">Your pet's health. <br> Our priority.</h3>
+      
       <div class="sign-center" style="width: 100%;
     display: flex;
     align-items: start;">
@@ -207,7 +257,7 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
     margin-top: 10px;">
     <i class="fa fa-paw" aria-hidden="true"></i>
 
-    <a href="logout.php" style="color: black;text-decoration: none;">
+    <a href="logout.php" style="color: white;text-decoration: none;">
     logout</a></button>
 
 
@@ -247,12 +297,19 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;">
-                        <span class="card__title">Adding</span>
+                        <span style="position: absolute;
+    top: 5%;
+    left: 0;
+    background: white;
+    padding: 5px;
+    /* color: var(--red); */
+    /* color: #72979D; */
+    color: black;">Adding</span>
                         <h3>A new family memeber added to the family?</h3>
                         <p>Congratulations! You decided to bring a new member into your household, Make sure to add him
                             now!</p>
-                        <div class="card__link container__center">
-                            <a href="#form-section">Add a Pet now</a>
+                        <div>
+                            <a href="#form-section" style="display: block;color: white;text-decoration: none;">Add a Pet now</a>
                         </div>
                     </div>
                     <div  style="position: relative;
@@ -268,12 +325,19 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;">
-                        <span class="card__title">Listing</span>
+                        <span style="position: absolute;
+    top: 5%;
+    left: 0;
+    background: white;
+    padding: 5px;
+    /* color: var(--red); */
+    /* color: #72979D; */
+    color: black;">Listing</span>
                         <h3>Keep track of your Pets that are registered!</h3>
                         <p>Don’t miss out keep track of your current pet’s list and make sure to enroll them all, are we
                             missing someone?</p>
-                        <div class="card__link container__center">
-                            <a href="#put-list">View now</a>
+                        <div>
+                            <a href="#put-list" style="display: block;color: white;text-decoration: none;">View now</a>
                         </div>
                     </div>
                     <div  style="position: relative;
@@ -289,12 +353,19 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;">
-                        <span class="card__title">Managing</span>
+                        <span style="position: absolute;
+    top: 5%;
+    left: 0;
+    background: white;
+    padding: 5px;
+    /* color: var(--red); */
+    /* color: #72979D; */
+    color: black;">Managing</span>
                         <h3>Do you need to make some adjustment to your list?</h3>
                         <p>New update? Don't worry, Manage your pet's list now. View, edit or delete as you please and
                             need. </p>
-                        <div class="card__link container__center">
-                            <a href="#put-list">Manage now</a>
+                        <div>
+                            <a href="#put-list" style="display: block;color: white;text-decoration: none;">Manage now</a>
                         </div>
                     </div>
                 </div>
@@ -385,16 +456,16 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
                     <div  style="display: flex;
     align-items: center;">
 
-                        <!-- <label for="photo"> Add photo from Image file: </label>
-                        <input type="file" name="photo" id="" style="width:300px;padding: 10px 20px;
+                        <label for="photo"> Add photo from Image file: </label>
+                        <input type="file" name="image" style="width:300px;padding: 10px 20px;
     width: 50%;
     margin: 10px 5px;
     /* background-color: transparent; */
-    border: none;" required=""> -->
+    border: none;" required="">
 
 
                     </div>
-                    <button name="submit" value="submit" type="submit" style="background-color: #AAC9CE;
+                    <button class="updatebutton updatebutton1" name="submit" value="submit" type="submit" style="
     color: white;
     border: none;
     outline: none;
@@ -404,33 +475,29 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
     height: 65px;
     border-radius: 50px;
     text-align: center;
-    /* margin-right: 50px; */
-    background-color: #AAC9CE;
+    
+    
     animation-name: example;
     animation-duration: 8s;
-    transition: width 2s;">update a pet</button> 
+    transition: width 2s;">Update </button> 
     &nbsp;
     &nbsp;
     &nbsp;
     &nbsp;
 
-        <a href="delete_pet.php?id=<?php echo $dataofpet['id']; ?>&clientemail=<?php echo $dataofcleint['email']; ?>" style="    background-color: #AAC9CE;
+        <a class="deletebutton deletebutton1" href="delete_pet.php?id=<?php echo $dataofpet['id']; ?>&clientemail=<?php echo $dataofcleint['email']; ?>" style="
     color: white;
-    /* display: block; */
     border: none;
     outline: none;
-    padding: 4% 5% 4% 7%;
+    padding: 4% 12% 4% 10%;
     cursor: pointer;
     font-size: 17px;
-    width: 200px;
-    height: 65px;
     border-radius: 50px;
     text-align: center;
-    /* margin-right: 50px; */
-    background-color: #AAC9CE;
+    text-decoration: none;
     animation-name: example;
     animation-duration: 8s;
-    transition: width 2s;">delete a pet</a>
+    transition: width 2s;">delete</a>
                 </form>
             </section>
            
@@ -456,9 +523,15 @@ if(isset($_POST['submit'])){
     $medical_description = $_POST['medical_description'];
     $vaccination_description = $_POST['vaccination_description'];
     // $password = $_POST['image'];
+
+    $imagename = $_FILES['image']['name'];                      //first to use the name of image
+    $tempname = $_FILES['image']['tmp_name'];               //temperory name in servers     
+    
+    //now we need to move the file to our directory
+    move_uploaded_file($tempname,"pets/$imagename");
     
     $query = "UPDATE pets SET 
-                name = '$name', clientid = '$clientid' , bread = '$bread' ,  birth_date = '$birth_date' , gender = '$gender' , 
+                name = '$name', image = '$imagename' , clientid = '$clientid' , bread = '$bread' ,  birth_date = '$birth_date' , gender = '$gender' , 
                 neutered = '$neutered' , medical_description = '$medical_description' , vaccination_description = '$vaccination_description' 
     
                 WHERE id = $id; ";
@@ -468,25 +541,33 @@ if(isset($_POST['submit'])){
         
     
         ?>
-        <script>
+
+<script>
             
-    
-            alert('you have successfully updated the pet !!');
-            window.open('updatepet.php?id=<?php echo $id; ?>' , '_self');
+            swal({
+  title: "Congratualtions",
+  text: "you have successfully updated the pet",
+  icon: "success",
+  button: "OK",
+})
+.then((willDelete) => {
+  if (willDelete) {
+    window.open('updatepet.php?id=<?php echo $id; ?>' , '_self');
+  } 
+});
+            // alert('you have successfully added the pet !!');
+        
             </script>
         
         
         <?php
-           
-
-       
         
   }
     else {
         
         ?>
         <script>
-            alert('username and password does not matches !!');
+            alert('correct your pet data!!');
             window.opener('login.php','_self');
 
        </script>

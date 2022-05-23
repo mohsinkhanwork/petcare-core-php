@@ -19,7 +19,17 @@ $dataofuser = mysqli_fetch_assoc($run);
 <html lang="en"><head></head><body style="background-color: rgba(128, 128, 128, 0.068);" data-new-gr-c-s-check-loaded="14.1062.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1062.0"><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
    
     <title>pet</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+
+
 
   <div id="header" style="background-color: rgba(128, 128, 128, 0.068);
     /* position: absolute; */
@@ -29,7 +39,7 @@ $dataofuser = mysqli_fetch_assoc($run);
     background-repeat: no-repeat;
     background-size: 100% 450px;
     height: 85vh;">
-    <div class="contact" style="text-align: center;margin-top: 20px;background-color: lightgray;padding: 1%;border-radius: 31px;">
+    <div class="contact" style="text-align: center;margin-top: 20px;background-color: #efefef;padding: 1%;border-radius: 31px;">
       <p>
         <a href="#" style="color: black;margin: 1%;text-decoration: none;"><i class="fa fa-phone" aria-hidden="true"></i>
 (+966) 503456789</a><a href="#" style="color: black;margin: 1%;text-decoration: none;"><i class="fa fa-envelope" aria-hidden="true"></i>
@@ -201,72 +211,140 @@ z-index: 2;"><a href="home.php" style="text-decoration: none;
       </div>
     </div>
   </div>
-     
+     <section class="" id="login-sec" style="color: black;
+    width: 100%;
+    padding: 30px;
+    margin: 0 auto;
+    box-sizing: border-box;color: #5A8288;width: 1000px;">
+        <div style="
+;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #FBFBFB;
+    color: #5A8288;
+    border-radius: 200px;">
+            <h3 style="font-size: 30px;
+    font-weight: bold;
+    /* margin-top: 60px; */
+    color: #5A8288;/* color: #ffffff; */
+    font: italic 1.2em &quot;Fira Sans&quot;, serif;
+    font-family: 'Coming Soon', cursive;
+    font-weight: 100;
+    font-size: 60px;
+    /* float: left; */
+    /* margin-left: 10%; */
+    float: none;
+    /* text-align: center; */margin: 0;">Review </h3>
 
-  <section style="padding: 40px;
-    background-color: #fff;">
-        <h1 class="put-title" style="text-align: center;
-    padding: 20px;">
-            Previous Appointment
-        </h1>
-        <div class="put-list-content">
 
             
-            <table id="" style="font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;">
-                <tbody><tr>
-                    <th class="js-sort-string">No.</th>
-                    <th class="js-sort-string">Name</th>
-                    <th class="js-sort-string">Servise</th>
-                    <th class="js-sort-date">data</th>
-                    <th class="js-sort-date">time</th>
-                    <th class="js-sort-string">Note</th>
-                    <th>Action</th>
-                  
-                </tr>
-                
-                <?php 
-                          
-                          $clientid = $dataofuser['id'];
-                         $sql = "SELECT * FROM appointments where client_id = $clientid ";
-
-
-                         $res = mysqli_query($con,$sql);
-
-                         if($result = mysqli_query($con, $sql)){
-                         if(mysqli_num_rows($res) > 0){
-                             $count=0;
-
-                          while($data = mysqli_fetch_assoc($res)){
-                             $count++;
-                               ?>
-                     
-                     <tr>
-                         <th><?php echo $count; ?></th>
-                         <th><?php echo $data['pet_id']; ?></th>
-                         <th><?php echo $data['type']; ?></th>
-                         <th><?php echo $data['date']; ?></th>
-                         <th><?php echo $data['time']; ?></th>
-                         <th><?php echo $data['note']; ?></th>
-                         <th>
-                            <a href="review.php?clientid=<?php echo $clientid; ?>">
-                                Review
-                            </a>
-                         </th>
-
-                         </tr>
-
-                         <?php
-                      }
-                     } 
-                  } ?>
-                                   
-
-            </tbody>
+            <form action="review.php?clientid=<?php echo $dataofuser['id'] ?>" enctype="multipart/form-data" method="post" style="max-width: 700px;
+    width: 100%;
+    /* padding: 20px; */
+    margin-top: 0;
+    color: #5A8288;margin: 2rem auto;
+    text-align: left;">
+           
         
-        
-        </table>
-            <br><br><br>
+           <label for="name" style="color: #638A8F;"><b>Name:</b></label>
+      <input type="text" placeholder="Enter Name" name="name" required style="width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 200px;">
+
+      <label for="email" style="color: #638A8F;"><b>E-mail</b></label>
+      <input type="email" placeholder="Enter Email" name="email" required style="width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 200px;">
+
+      <textarea name="description" placeholder="Write something.." style="height:200px ;width: 100%; background-color: #F1F1F1; border: none;padding: 20px;" required=""></textarea>
+
+<input type="hidden" name="client_id" value="<?php echo $clientid; ?>">
+               
+                <input class="apointment-form-btn" name="submit" type="submit" value="submit review" style="padding: 15px 25px;
+    margin-top: 20px;
+    width: 100%;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: #72979D;">
+
+              
+
+            </form>
         </div>
     </section>
+
+    <?php 
+
+$con = mysqli_connect("localhost","root","","petcare2");
+
+if(isset($_POST['submit'])){
+    
+
+    $client_id = $_POST['client_id'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $description = $_POST['description'];
+
+    // $password = $_POST['image'];
+    
+    $query = "INSERT INTO reviews (client_id, name , email , description ) 
+    VALUES ('$client_id' , '$name' ,'$email', '$description')";
+                                                                                                        //if we have no username and pass in the data base then redirect to the current page  
+    
+    if(mysqli_query($con, $query)){
+        
+    
+        ?>
+
+<script>
+            
+            swal({
+  title: "Congratualtions",
+  text: "you have successfully submitted the review",
+  icon: "success",
+  button: "OK",
+})
+.then((willDelete) => {
+  if (willDelete) {
+    window.open('review.php?clientid=<?php echo $client_id; ?>' , '_self');
+  } 
+});
+            // alert('you have successfully added the pet !!');
+        
+            </script>
+      
+        
+        
+        <?php
+           
+
+       
+        
+  }
+    else {
+        
+        ?>
+        <script>
+            alert('username and password does not matches !!');
+            window.opener('login.php','_self');
+
+       </script>
+        
+        
+        <?php
+    }
+               
+}
+
+?>

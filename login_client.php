@@ -378,7 +378,7 @@ $email = $_POST['email'];
   
         ?>
         <script>
-            alert('you have successfully logged !!');
+            // alert('you have successfully logged !!');
             // location.href = 'pet.php';
             window.open('pet.php?email=<?php echo $email; ?>' , '_self');
        

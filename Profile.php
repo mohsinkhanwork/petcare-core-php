@@ -24,8 +24,13 @@ $data = mysqli_fetch_assoc($run);
 </style>
 </head><body style="background-color: rgba(128, 128, 128, 0.068);" data-new-gr-c-s-check-loaded="14.1062.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1062.0"><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
    
-    <title>pet</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+    <title>profile</title>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 
 
@@ -71,7 +76,7 @@ height: 120px;
 position: relative;
 left: 20%;
 right: 20%;
-z-index: 2;"><a href="login_client.php" style="text-decoration: none;
+z-index: 2;"><a href="home.php" style="text-decoration: none;
     color: black;">Home</a></button>
   <button style="background-color: white;
     color: black;
@@ -203,7 +208,7 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
     margin-top: 10px;">
     <i class="fa fa-paw" aria-hidden="true"></i>
 
-    <a href="logout.php" style="color: black;text-decoration: none;">
+    <a href="logout.php" style="color: white;text-decoration: none;">
     logout</a></button>
 
 
@@ -261,7 +266,8 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
     position: relative;
     font-size: large;
     color: #bdd1d3;">
-                <li>
+                <li style="margin: 40px;
+    border-bottom: solid #728486c4 1px;">
                     <h3 style="color: #ffffff;
     font: italic 1.2em Fira Sans, serif;
     font-family: 'Coming Soon', cursive;
@@ -270,12 +276,19 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
     float: none;
     text-align: center;"><?php echo $data['first_name'] . ' ' . $data['last_name'] ;  ?></h3>
                 </li>
-                <li>
+                <li style="margin: 40px;
+    border-bottom: solid #728486c4 1px;">
+                    <h4><?php echo $data['phone']?></h4>
+                </li>
+
+                <li style="margin: 40px;
+    border-bottom: solid #728486c4 1px;">
                     <h4><?php echo $data['email']?></h4>
                 </li>
           
-                <li>
-                    <h4><a style="text-decoration: none;color: black;" href="delete_client.php?id=<?php echo $data['id']; ?> " style="text-decoration: none;">Delete account</a></h4>
+                <li style="margin: 40px;
+    border-bottom: solid #728486c4 1px;">
+                    <h4><a style="text-decoration: none;color: lightgrey;" href="delete_client.php?id=<?php echo $data['id']; ?> " style="text-decoration: none;">Delete account</a></h4>
                 </li>
             </ul>
             <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-542207-jpeg.png" width="150"> -->
@@ -298,7 +311,16 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
     float: none;">Edit Profile:</h3>
 
             <label for="name"><b>First Name:</b></label>
-                    <input type="text" placeholder="Enter First Name" name="first_name" value="<?php echo $data['first_name'];  ?>" required style="width: 100%;
+                    <input type="text" name="first_name" value="<?php echo $data['first_name'];  ?>" required style="width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 200px;" value="">
+
+<label for="name"><b>Last Name:</b></label>
+                    <input type="text" name="last_name" value="<?php echo $data['last_name'];  ?>" required style="width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
@@ -307,7 +329,7 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
     border-radius: 200px;" value="">
 
                     <label for="email"><b>E-mail</b></label>
-                    <input type="email" placeholder="Enter Email" name="email" required value="<?php echo $data['email'];  ?>" style="width: 100%;
+                    <input type="email" name="email" required value="<?php echo $data['email'];  ?>" style="width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
@@ -359,6 +381,7 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
             if(isset($_POST['submit'])){
 
 $first_name = $_POST['first_name'];
+$last_name = $_POST['last_name'];
  $email = $_POST['email'];
  $city = $_POST['city'];
  $id = $_POST['id'];
@@ -369,18 +392,29 @@ $con = mysqli_connect("localhost","root","","petcare2");
 
  
  
- $query = "UPDATE clients SET first_name = '$first_name', email = '$email' , city = '$city' WHERE id = $id; "; 
+ $query = "UPDATE clients SET first_name = '$first_name', last_name = '$last_name' , email = '$email' , city = '$city' WHERE id = $id; "; 
  
  $run = mysqli_query($con,$query);
  if($run == true){
 ?>
 
 <script>
-    alert('data updated');
+            
+            swal({
+  title: "Congratualtions",
+  text: "you have successfully updated the profile",
+  icon: "success",
+  button: "OK",
+})
+.then((willDelete) => {
+  if (willDelete) {
     window.open('Profile.php?email=<?php echo $email; ?>' , '_self');
+  } 
+});
+            // alert('you have successfully added the pet !!');
+        
+            </script>
 
-
-</script> 
 
 <?php
  }

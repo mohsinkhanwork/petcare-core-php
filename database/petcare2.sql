@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2022 at 05:02 PM
+-- Generation Time: May 22, 2022 at 09:15 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -68,7 +68,13 @@ CREATE TABLE `appointments` (
 
 INSERT INTO `appointments` (`id`, `pet_id`, `date`, `time`, `type`, `note`, `client_id`, `deleted`, `accept`) VALUES
 (16, 'ASD', '2021 12 12', '10:12 Am', 'accepted', 'ASDAsdaSD', 20, 0, 1),
-(17, 'ASD', '2021 12 12', '10:12 Am', 'decline', 'ASDAsdaSD', 20, 1, 0);
+(17, 'ASD', '2021 12 12', '10:12 Am', 'decline', 'ASDAsdaSD', 20, 1, 0),
+(18, 'ASD', '2021 12 12', '10:12 Am', 'Pet Checkup', 'test note', 22, 0, 0),
+(19, 'select pet', 'Select the date Availabli', 'Select the time Availabli', 'Select type', '', 31, 0, 0),
+(20, 'select pet', 'Select the date Availabli', 'Select the time Availabli', 'Select type', '', 31, 0, 0),
+(21, 'select pet', 'Select the date Availabli', 'Select the time Availabli', 'Select type', '', 0, 0, 0),
+(22, 'select pet', 'Select the date Availabli', 'Select the time Availabli', 'Select type', '', 31, 0, 0),
+(23, 'select pet', 'Select the date Availabli', 'Select the time Availabli', 'Select type', '', 31, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -118,7 +124,11 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `last_name`, `first_name`, `email`, `phone`, `city`, `password`, `gender`, `image`) VALUES
-(22, 'khan', 'mohsin', 'mkhan9658@gmail.com', '123123123', '', '123123123', 'Male', 'IMG_7201.jpg');
+(23, 'khan', 'mohsin', 'test@gmail.com', '+923239224479', '', '123123123', 'Male', 'istockphoto-1296353202-170667a.jpg'),
+(26, 'khan', 'mohsin', 'test@gmail.com', '+923239224479', '', '123123123', 'Male', 'istockphoto-1296353202-170667a.jpg'),
+(28, 'khan', 'mohsin', 'test@gmail.com', '+923239224479', '', '123123123', 'Male', 'istockphoto-1296353202-170667a.jpg'),
+(30, 'khan', 'mohsin', 'test@gmail.com', '+923239224479', '', '123123123', 'Male', 'istockphoto-1296353202-170667a.jpg'),
+(31, 'khan', 'mohsin', 'mkhan9658@gmail.com', '+923239224479', '', '123123123', 'Male', '');
 
 -- --------------------------------------------------------
 
@@ -229,7 +239,13 @@ CREATE TABLE `pets` (
 --
 
 INSERT INTO `pets` (`id`, `clientid`, `name`, `bread`, `birth_date`, `gender`, `neutered`, `medical_description`, `vaccination_description`, `image`, `client_id`, `deleted`, `accept`) VALUES
-(66, 20, 'test pets', 'test bread', '2022-05-20', 'male', 'notneutered', 'test mediacl description', 'test vaccination desc', 'istockphoto-1296353202-170667a.jpg', 0, NULL, NULL);
+(86, 22, 'ADasd', 'ASDasd', '2022-05-10', '', '', '', '', 'istockphoto-1296353202-170667a.jpg', 0, NULL, NULL),
+(87, 22, 'ADasd', 'ASDasd', '2022-05-10', '', '', '', '', 'istockphoto-1296353202-170667a.jpg', 0, NULL, NULL),
+(88, 22, 'ADasd', 'ASDasd', '2022-05-10', '', '', '', '', 'istockphoto-1296353202-170667a.jpg', 0, NULL, NULL),
+(89, 22, 'ADasd', 'ASDasd', '2022-05-10', '', '', '', '', 'istockphoto-1296353202-170667a.jpg', 0, NULL, NULL),
+(90, 22, 'ADasd', 'ASDasd', '2022-05-10', '', '', '', '', 'istockphoto-1296353202-170667a.jpg', 0, NULL, NULL),
+(91, 22, 'ADasd', 'ASDasd', '2022-05-10', '', '', '', '', 'istockphoto-1296353202-170667a.jpg', 0, NULL, NULL),
+(92, 22, 'ADasd', 'ASDasd', '2022-05-10', '', '', '', '', 'istockphoto-1296353202-170667a.jpg', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -251,12 +267,9 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `name`, `email`, `description`, `created_date`, `client_id`) VALUES
-(1, 'rohit', 'rohit@gmail.com', 'Hello how are you\r\n\r\nTEST IT', '2022-05-14 10:17:32', 1),
-(2, 'amit', 'amit@gmail.com', 'test it', '2022-05-14 10:18:24', 1),
-(3, 'jitender', 'jitender@gmail.com', 'dsfsdf', '2022-05-17 13:29:26', 4),
-(4, 'sadasd', 'dsfdds@gmail.com', 'dsfsdf', '2022-05-17 13:31:27', 4),
-(5, 'amit', 'amit@gmail.com', 'sdfs', '2022-05-17 14:07:10', 4),
-(6, 'bob', 'tebshbfd@gmail.com', 'kdsfnv', '2022-05-17 18:29:43', 7);
+(7, 'mohsin khan', 'mkhan9658@gmail.com', 'test review', '2022-05-22 20:54:15', 22),
+(8, 'mohsin khan', 'mkhan9658@gmail.com', 'asdaSD', '2022-05-23 00:13:59', 31),
+(9, 'mohsin khan', 'mkhan9658@gmail.com', 'ASFASDF', '2022-05-23 00:14:55', 31);
 
 -- --------------------------------------------------------
 
@@ -362,7 +375,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `appointment_availables`
@@ -374,7 +387,7 @@ ALTER TABLE `appointment_availables`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `medias`
@@ -398,13 +411,13 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `pets`
 --
 ALTER TABLE `pets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `services`

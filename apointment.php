@@ -19,7 +19,17 @@ $dataofuser = mysqli_fetch_assoc($run);
 <html lang="en"><head></head><body style="background-color: rgba(128, 128, 128, 0.068);" data-new-gr-c-s-check-loaded="14.1062.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1062.0"><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
    
     <title>pet</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+
+
 
   <div id="header" style="background-color: rgba(128, 128, 128, 0.068);
     /* position: absolute; */
@@ -61,7 +71,7 @@ height: 120px;
 position: relative;
 left: 20%;
 right: 20%;
-z-index: 2;"><a href="login_client.php" style="text-decoration: none;
+z-index: 2;"><a href="home.php" style="text-decoration: none;
     color: black;">Home</a></button>
   <button style="background-color: white;
     color: black;
@@ -406,13 +416,25 @@ if(isset($_POST['submit'])){
         
     
         ?>
-        <script>
-            
-    
-            alert('you have successfully created the appointment !!');
-            window.open('apointment.php?clientid=<?php echo $client_id; ?>' , '_self');
 
+<script>
+            
+            swal({
+  title: "Congratualtions",
+  text: "you have successfully created the appointment",
+  icon: "success",
+  button: "OK",
+})
+.then((willDelete) => {
+  if (willDelete) {
+    window.open('apointment.php?clientid=<?php echo $client_id; ?>' , '_self');
+  } 
+});
+            // alert('you have successfully added the pet !!');
+        
             </script>
+
+
         
         
         <?php

@@ -1,13 +1,14 @@
 
-<?php require('dbconfig.php');
+<?php   $con = mysqli_connect("localhost","root","","petcare");
 
-$clientid = $_GET['clientid'];
-$sql = "SELECT * FROM clients WHERE id='$clientid' ";
-$run=mysqli_query($con,$sql);
-$dataofuser = mysqli_fetch_assoc($run);
+if(!$con){
+    echo "connection failed";
+} else {
 
+    // echo "conection done";
+} 
 
-      ?>
+?>
 
 <!DOCTYPE html>
 
@@ -16,7 +17,6 @@ $dataofuser = mysqli_fetch_assoc($run);
 <head>
 
   <title>pet care</title>
-  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
@@ -35,7 +35,8 @@ $dataofuser = mysqli_fetch_assoc($run);
     background-repeat: no-repeat;
     background-size: 100% 450px;
     height: 85vh;">
-    <div class="contact" style="text-align: center;margin-top: 20px;background-color: #efefef; padding: 1%;border-radius: 31px;">
+    <div class="contact" 
+    style="text-align: center;margin-top: 20px;background-color: #efefef;padding: 1%;border-radius: 31px;">
       <p>
         <a href="#" style="color: black;margin: 1%;text-decoration: none;"><i class="fa fa-phone" aria-hidden="true"></i>
 (+966) 503456789</a><a href="#" style="color: black;margin: 1%;text-decoration: none;"><i class="fa fa-envelope" aria-hidden="true"></i>
@@ -45,7 +46,7 @@ RJGR+G56 Alyasmin, Riyadh
       </p>
     </div>
 
-    <div style="height: 120px;
+      <div  style="height: 120px;
 width: 90%;
 background-color: white;
 border-radius: 110px;
@@ -53,8 +54,7 @@ position: relative;
 left: 5%;
 right: 5%;
 z-index: 1;">
-  <button style="border-bottom-left-radius:110px; border-top-left-radius:110px; 
-  background-color: white;
+  <button style="border-bottom-left-radius:110px; border-top-left-radius:110px; margin-left: 200px; background-color: white;
 color: black;
 float: left;
 border: none;
@@ -67,9 +67,9 @@ height: 120px;
 position: relative;
 left: 20%;
 right: 20%;
-z-index: 2;"><a href="home.php" style="text-decoration: none;
+z-index: 2;" ><a href="#" style="text-decoration: none;
     color: black;">Home</a></button>
-  <button style="background-color: white;
+  <button  style="background-color: white;
     color: black;
     float: left;
     border: none;
@@ -83,54 +83,7 @@ z-index: 2;"><a href="home.php" style="text-decoration: none;
     left: 20%;
     right: 20%;
     z-index: 2;">
-    
-    <a href="aboutus.php?clientid=<?php echo $dataofuser['id']; ?>" style="text-decoration: none;color: black;">About us</a></button>
-
-<button style="background-color: white;
-    color: black;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-    width: 10%;
-    height: 120px;
-    position: relative;
-    left: 20%;
-    right: 20%;
-    z-index: 2;"><a href="profile.php?email=<?php echo $dataofuser['email']; ?>" style="text-decoration: none;color: black;">profile</a></button>
-
-<button style="background-color: white;
-    color: black;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-    width: 10%;
-    height: 120px;
-    position: relative;
-    left: 20%;
-    right: 20%;
-    z-index: 2;"><a href="pet.php?email=<?php echo $dataofuser['email']; ?>" style="text-decoration: none;color: black;">pets</a></button>
-
-<button style="background-color: white;
-    color: black;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-    width: 10%;
-    height: 120px;
-    position: relative;
-    left: 20%;
-    right: 20%;
-    z-index: 2;">
-    <a href="apointment.php?clientid=<?php echo $dataofuser['id']; ?>" style="text-decoration: none;color: black;">appointment</a></button>
+    <a href="#aboutus" style="text-decoration: none;color: black;">About us</a></button>
 
   <button style="border-bottom-right-radius:110px; border-top-right-radius:110px; background-color: white;
     color: black;
@@ -145,10 +98,10 @@ z-index: 2;"><a href="home.php" style="text-decoration: none;
     position: relative;
     left: 20%;
     right: 20%;
-    z-index: 2;"><a href="aboutus.php?clientid=<?php echo $dataofuser['id']; ?>" style="text-decoration: none;
+    z-index: 2;" ><a href="#aboutus" style="text-decoration: none;
     color: black;">ContactUs</a></button>
 
-  <button style="background-color: white;
+  <button  style="background-color: white;
     color: black;
     float: left;
     border: none;
@@ -210,14 +163,20 @@ z-index: 2;"><a href="home.php" style="text-decoration: none;
     <a href="logout.php" style="color: black;text-decoration: none;">
     logout</a></button>
 
-  
-
               
       </div>
     </div>
   </div>
      
+    
+
+
+
+
+
   
+
+
 <div  style="display: flex;
     flex-direction: row;
     margin-top: 50px;
@@ -240,14 +199,6 @@ z-index: 2;"><a href="home.php" style="text-decoration: none;
     float: none;
     text-align: center;">Our Company</h3>
       <br>
-
-      <?php
-
-$sql = "SELECT * FROM pages WHERE id= 3 ";
-$run=mysqli_query($con,$sql);
-$dataofcompany = mysqli_fetch_assoc($run);
-
-?>
       <p style="/* margin-top: 50px; */
     color: #99bfc5d5;
     font: italic 1.2em &quot;Fira Sans&quot;, serif;
@@ -256,29 +207,16 @@ $dataofcompany = mysqli_fetch_assoc($run);
     font-size: 20px;
     /* float: left; */
     /* margin-left: 10%; */
-    text-align: center;"><?php echo $dataofcompany['page_content']; ?></p>
-        <br><br>
+    text-align: center;">Are you a new pet owner, or you acquire multiple number of pets? Our services and online planing in managing the veterinary clinic appointment making and results reviewing and have a contact with our veterinarian through email for advice and maintaining food supply. Plan for the future care of your pet today.                                                </p>
+        <br><br><br><br>
 
-        <div style="display:flex;width: 100%;">
-        <p style="width: 50%;text-align: center;">
-  <i class="fas fa-store-alt" aria-hidden="true" style="font-size: 49px;"></i>
-  </p>
-
-  <p style="width: 50%;text-align: center;">
-  <i class="fa fa-phone" style="font-size: 47px;" aria-hidden="true"></i>
-  </p>
-        </div>
-  
-  
-      <p style="margin-top: -11px;">
-        <i style="font-size: 50px; margin-left: 50px;color: black;
+      <p><i style="font-size: 50px; margin-left: 50px;color: black;
     position: relative;
     top: 8px;" class="material-icons">store</i> <i style=" font-size: 50px; margin-left: 250px;color: black;
     position: relative;
     top: 8px;" >phone</i> </p>
 
-      <p style="margin-bottom: 0%;"><i style="font-size: 30px; margin-left: 50px; color: #5a8288;">Our office</i>
-      <i style="font-size: 30px; margin-left: 210px;color: #5a8288;">Our contact</i> </p>
+      <p style="margin-bottom: 0%;"><i style="font-size: 30px; margin-left: 50px; color: #5a8288;">Our office</i> <i style="font-size: 30px; margin-left: 210px;color: #5a8288;">Our contact</i> </p>
 
       <p style="margin-top: 0%;margin-top: 50px; */
     color: #99bfc5d5;
@@ -295,7 +233,7 @@ $dataofcompany = mysqli_fetch_assoc($run);
     font-size: 20px;text-align: center;"><i style="font-size: 18px; margin-left: 10px; ">RJGR+G56 Alyasmin, Riyadh     </i> <i style="font-size: 18px; margin-left: 190px;">(+966)503456789                                     <br><span style="margin-left: 450px;">petcare@domain.com</span></i> </p>
    
     </div>
-    <div class="aboutus" id="" style="background-color: #ffffff96; border-radius: 200px; padding: 20px; min-height: 720px;width: 100%;
+    <div id="aboutus" style="background-color: #ffffff96; border-radius: 200px; padding: 20px; min-height: 720px;width: 100%;
     max-width: 650px;">
       <h3 style="margin-top: 10%;  color: #5a8288;/* color: #ffffff; */
     font: italic 1.2em &quot;Fira Sans&quot;, serif;
@@ -308,13 +246,6 @@ $dataofcompany = mysqli_fetch_assoc($run);
     text-align: center;">About Us
       </h3>
       <br>
-      <?php
-
-$sql = "SELECT * FROM pages WHERE id=2 ";
-$run=mysqli_query($con,$sql);
-$dataofpages = mysqli_fetch_assoc($run);
-
-?>
       <p style="color: #99BFC5D5;/* margin-top: 50px; */
     color: #99bfc5d5;
     font: italic 1.2em &quot;Fira Sans&quot;, serif;
@@ -323,21 +254,20 @@ $dataofpages = mysqli_fetch_assoc($run);
     font-size: 20px;
     /* float: left; */
     /* margin-left: 10%; */
-    text-align: center;"><?php echo $dataofpages['page_content']; ?></p>
+    text-align: center;">Are you a new pet owner, or you acquire multiple number of pets? Our services and online planing in managing the veterinary clinic appointment making and results reviewing and have a contact with our veterinarian through email for advice and maintaining food supply. Plan for the future care of your pet today.</p>
 
       <p>
         <img style=" width: 100px; height: 300px; margin-top: 5%; margin-right: 10%; margin-left: 10%;" src="https://templatekit.jegtheme.com/petzy/wp-content/uploads/sites/31/2021/02/EFQ3ZHR.jpg"><img style=" width: 100px; height: 300px; margin-top: 0px; margin-right: 10%;" src="https://templatekit.jegtheme.com/petzy/wp-content/uploads/sites/31/2021/02/PWZQYFE.jpg"><img style=" width: 100px; height: 300px; margin-top: 5%; margin-right: 10%;" src="https://templatekit.jegtheme.com/petzy/wp-content/uploads/sites/31/2021/02/4647HBP.jpg">
     
 
       </p>
-
-  
-
     </div>
 
   </div>
 
+  <div class="login" id="loginclient" style="background-color:#FBFBFB ; border-radius: 100px;  margin-top: 50px; margin-bottom: 50px;">
 
+</div>
 <footer>
     <div class="container" style="background-color: #73a5ac96;">
       <h3 style="color: #ffffff;
@@ -362,51 +292,37 @@ $dataofpages = mysqli_fetch_assoc($run);
 
 $con = mysqli_connect("localhost","root","","petcare2");
 
-if(isset($_POST['register'])){
+if(isset($_POST['login'])){
     
-    $email = $_POST['email'];
-    $id = $_POST['id'];
+$email = $_POST['email'];
     $password = $_POST['password'];
-    $phone = $_POST['phone'];
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $gender = $_POST['gender'];
-    // $password = $_POST['image'];
     
-    $query = "INSERT INTO clients (first_name, last_name, email, phone, gender, password, id) 
-    VALUES ('$first_name', '$last_name', '$email', '$phone', '$gender', '$password', '$id')";
-                                                                                                        //if we have no username and pass in the data base then redirect to the current page  
-    
-    if(mysqli_query($con, $query)){
-        
-        
-        // $data = mysqli_fetch_assoc($query);
-        // $id = $data['id'];
-        // echo "id = ".$id;
-        
-        // session_start();
-        // $_SESSION['userid'] = $id;
-        // header('location:admin/admindash.php');
+    $query = mysqli_query($con,"SELECT * FROM clients WHERE email = '$email' AND password = '$password'");
 
+    
+    if(mysqli_num_rows($query) >0 ){
+      
+        
+  
         ?>
         <script>
-            alert('you have successfully created the account. !!');
-          location.href = 'login_client.php';
-            </script>
+            alert('you have successfully logged !!');
+            // location.href = 'pet.php';
+            window.open('pet.php?email=<?php echo $email; ?>' , '_self');
+       
+
+       </script>
         
         
         <?php
-            header("Location: login_client.php");
-
-       
         
   }
     else {
         
         ?>
         <script>
-            alert('username and password does not matches !!');
-            window.opener('login.php','_self');
+            alert('username and password does not matches !');
+            window.opener('login_client.php','_self');
 
        </script>
         

@@ -14,12 +14,21 @@ $dataofuser = mysqli_fetch_assoc($run);
   border: 1px solid lightgray;
   padding: 1%;
 }
+
+
+
+
+
 </style>
 <html lang="en"><head></head><body style="background-color: rgba(128, 128, 128, 0.068);" data-new-gr-c-s-check-loaded="14.1062.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1062.0"><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
    
     <title>pet</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 
 
@@ -64,7 +73,7 @@ height: 120px;
 position: relative;
 left: 20%;
 right: 20%;
-z-index: 2;"><a href="login_client.php" style="text-decoration: none;
+z-index: 2;"><a href="home.php" style="text-decoration: none;
     color: black;">Home</a></button>
   <button style="background-color: white;
     color: black;
@@ -163,6 +172,9 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
   </button>
 
 </div>
+
+
+
     <div class="header" style="color: #ffffff;
     font: italic 1.2em &quot;Fira Sans&quot;, serif;
     font-family: 'Coming Soon', cursive;
@@ -257,6 +269,8 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
                         <div>
                             <a href="#form-section" style="display: block;color: white;text-decoration: none;">Add a Pet now</a>
                         </div>
+
+                        
                     </div>
                     <div  style="position: relative;
     margin: 0 5%;
@@ -358,7 +372,7 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
 
                         <div class="col" style="margin-right: 30px;">
                             <label> What's your pet gender? </label> <br>
-                            <input type="radio" name="gender" value="female"> <label for="Female">Female</label>
+                            <input type="radio" name="gender" value="female" > <label for="Female">Female</label>
                             <br>
                             <input type="radio" name="gender" value="male"> <label for="Male">Male</label> <br>
                         </div>
@@ -416,7 +430,11 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
     animation-name: example;
     animation-duration: 8s;
     transition: width 2s;">Add a pet</button>
+
+                        
                 </form>
+
+               
             </section>
             <section id="put-list"  style="padding: 40px;
     background-color: #fff;">
@@ -491,12 +509,12 @@ z-index: 2;"><a href="login_client.php" style="text-decoration: none;
         </div>
     </main>
 
-
-
     <?php 
 
 $con = mysqli_connect("localhost","root","","petcare2");
 
+$gender = '';
+$neutered = '';
 if(isset($_POST['submit'])){
     
     $name = $_POST['name'];
@@ -523,23 +541,30 @@ if(isset($_POST['submit'])){
         ?>
         <script>
             
-    
-            alert('you have successfully added the pet !!');
-            window.open('pet.php?email=<?php echo $email; ?>' , '_self');
+            swal({
+  title: "Congratualtions",
+  text: "you have successfully added the pet",
+  icon: "success",
+  button: "OK",
+})
+.then((willDelete) => {
+  if (willDelete) {
+    window.open('pet.php?email=<?php echo $email; ?>' , '_self');
+  } 
+});
+            // alert('you have successfully added the pet !!');
+        
             </script>
         
         
         <?php
-           
-
-       
         
   }
     else {
         
         ?>
         <script>
-            alert('username and password does not matches !!');
+            alert('please correct your pet data!!');
             window.opener('login.php','_self');
 
        </script>
